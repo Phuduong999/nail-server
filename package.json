@@ -7,6 +7,7 @@
     "start": "node index.js",
     "dev": "nodemon src/app.ts",
     "build": "tsc && prisma generate",
+    "migrate": "prisma migrate deploy",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prisma:seed": "ts-node prisma/seed.ts"
   },
