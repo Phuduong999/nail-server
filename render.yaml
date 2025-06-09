@@ -2,13 +2,17 @@ services:
   - type: web
     name: nail-fpt-server
     env: node
-    buildCommand: npm install && npm run build && npm run migrate
+    buildCommand: npm install
     startCommand: npm start
     envVars:
       - key: DATABASE_URL
-        value: "file:./prisma/dev.db"
+        value: "libsql://nail-fpt-db.turso.io"
+      - key: TURSO_AUTH_TOKEN
+        value: "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJnaWQiOiJmMWMzOTAxMC01OTJiLTRjM2QtODM4Mi1jMzcxNWQzNmY0YTgiLCJpYXQiOjE3NDk0ODUxMDksInJpZCI6IjNiYWE2NjAwLThjNjEtNGFkZC05YWY1LTJjZDY1NTRlYzcxZSJ9.LF6m1PTvJV8Lt0kpV1QHpUmE484Us7lWG5mykK5m-xA0m3PO1zpQrJEa2xzklqkfid1jE3nisZIl9d3ZbOHWAw"
       - key: JWT_SECRET
         value: "your-super-secret-key-here"
+      - key: PORT
+        value: "3000"
     disk:
       name: sqlite-data
       mountPath: /opt/render/project/src/prisma
